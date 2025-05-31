@@ -13,25 +13,38 @@ export const TeamSection = () => {
       bio: "Visionary leader with 10+ years in software development and education.",
       skills: ["Leadership", "Strategy", "Full Stack Development"],
       social: {
-        linkedin: "#",
-        twitter: "#",
+        linkedin: "www.linkedin.com/in/karthik2329",
+        instagram: "#",
         email: "karthik@zensol.in"
       }
     },
     {
-      name: "Priya Sharma",
-      role: "Head of Training",
+      name: "Arunachalam S",
+      role: "Co-Founder",
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b002",
       bio: "Expert educator with passion for technology training and student success.",
-      skills: ["Education", "Curriculum Design", "Mentoring"],
+      skills: ["Education", "Curriculum Design", "Marketing"],
       social: {
         linkedin: "#",
         github: "#",
         email: "priya@zensol.in"
       }
     },
+    
     {
-      name: "Rajesh Kumar",
+      name: "Harshini A",
+      role: "Chief Executive Officer",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
+      skills: ["Java", "Database", "Python"],
+      social: {
+        github: "#",
+        linkedin: "#",
+        email: "rajesh@zensol.in"
+      }
+    },
+    {
+      name: "Anu S",
       role: "Lead Developer",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
       bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
@@ -43,11 +56,36 @@ export const TeamSection = () => {
       }
     },
     {
-      name: "Anita Reddy",
-      role: "UI/UX Design Lead",
+      name: "Kavibarathi S",
+      role: "Developer & Instractor",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
+      skills: ["React", "Database", "Python"],
+      social: {
+        github: "#",
+        linkedin: "#",
+        email: "rajesh@zensol.in"
+      }
+    },
+    
+    {
+      name: "Pranesh",
+      role: "Developer",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      bio: "Full-stack developer specializing in modern web technologies & Cyber Securitys.",
+      skills: ["React.Native", "Database", "Python", "Cyber Security"],
+      social: {
+        github: "#",
+        linkedin: "#",
+        email: "rajesh@zensol.in"
+      }
+    },
+    {
+      name: "Adithyaa G",
+      role: "Graphics Designer",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
       bio: "Creative designer focused on user experience and innovative design solutions.",
-      skills: ["UI/UX Design", "Figma", "Design Systems"],
+      skills: ["UI/UX Design","3D-Modeling", "Figma", "Design Systems"],
       social: {
         linkedin: "#",
         twitter: "#",
