@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -12,7 +11,7 @@ import { CoursesSection } from "@/components/CoursesSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { TeamSection } from "@/components/TeamSection";
 import { AboutSection } from "@/components/AboutSection";
-import { HiringSection } from "@/components/HiringSection";
+import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
@@ -26,14 +25,14 @@ const Index = () => {
       {/* Hero Section */}
       <Hero />
       
+      {/* About Section - moved to second */}
+      <AboutSection />
+      
       {/* Services Section */}
       <ServicesSection />
       
       {/* Courses Section */}
       <CoursesSection />
-      
-      {/* About Section */}
-      <AboutSection />
       
       {/* Team Section */}
       <TeamSection />
@@ -41,8 +40,8 @@ const Index = () => {
       {/* Testimonials Section */}
       <TestimonialsSection />
       
-      {/* Hiring Section */}
-      <HiringSection />
+      {/* Career Contact Form Section - replaces HiringSection */}
+      <ContactForm />
       
       {/* Footer */}
       <Footer />
