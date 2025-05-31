@@ -23,8 +23,8 @@ export const AboutSection = () => {
   ];
 
   const achievements = [
-    { number: "500+", label: "Students Graduated", icon: Award },
-    { number: "50+", label: "Enterprise Clients", icon: TrendingUp },
+    { number: "200+", label: "Students Graduated", icon: Award },
+    { number: "25+", label: "Enterprise Clients", icon: TrendingUp },
     { number: "98%", label: "Job Placement Rate", icon: Target },
     { number: "4.9/5", label: "Student Rating", icon: Heart }
   ];
