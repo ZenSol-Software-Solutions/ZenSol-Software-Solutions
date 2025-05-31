@@ -34,7 +34,7 @@ export const TeamSection = () => {
     {
       name: "Harshini A",
       role: "Chief Executive Officer",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
       bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
       skills: ["Java", "Database", "Python"],
       social: {
@@ -46,7 +46,7 @@ export const TeamSection = () => {
     {
       name: "Anu S",
       role: "Lead Developer",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
       bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
       skills: ["React", "Node.js", "Cloud Architecture"],
       social: {
@@ -58,7 +58,7 @@ export const TeamSection = () => {
     {
       name: "Kavibarathi S",
       role: "Developer & Instractor",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
       bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
       skills: ["React", "Database", "Python"],
       social: {
@@ -83,7 +83,7 @@ export const TeamSection = () => {
     {
       name: "Adithyaa G",
       role: "Graphics Designer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
       bio: "Creative designer focused on user experience and innovative design solutions.",
       skills: ["UI/UX Design","3D-Modeling", "Figma", "Design Systems"],
       social: {
