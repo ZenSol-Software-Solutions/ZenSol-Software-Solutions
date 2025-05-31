@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
@@ -112,15 +111,6 @@ export const Hero = () => {
             >
               Explore Courses
               <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-gray-300 hover:border-blue-500 px-8 py-6 text-lg"
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <Play className="w-5 h-5 mr-2" />
-              Watch Demo
             </Button>
           </motion.div>
         </motion.div>
