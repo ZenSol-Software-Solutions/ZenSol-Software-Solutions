@@ -80,7 +80,7 @@ export const Hero = () => {
             transition={{ delay: 0.5 }}
           >
             {[
-              { number: "500+", label: "Students Trained" },
+              { number: "200+", label: "Students Trained" },
               { number: "50+", label: "Projects Delivered" },
               { number: "12+", label: "Courses Available" }
             ].map((stat, index) => (
