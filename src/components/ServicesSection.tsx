@@ -1,7 +1,8 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Code, Palette, Database, Cpu, Zap, Target, Globe, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Code, Palette, Database, Cpu, Zap, Target, Globe, Shield, MessageCircle } from "lucide-react";
 
 export const ServicesSection = () => {
   const services = [
@@ -43,6 +44,10 @@ export const ServicesSection = () => {
     }
   ];
 
+  const handleEnquiry = () => {
+    window.open("https://forms.gle/Vcpi8w1Lqb9AsTRw6", "_blank");
+  };
+
   return (
     <section id="services" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,10 +87,17 @@ export const ServicesSection = () => {
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-gray-600 text-center leading-relaxed">
+                <CardContent className="text-center">
+                  <CardDescription className="text-gray-600 leading-relaxed mb-6">
                     {service.description}
                   </CardDescription>
+                  <Button 
+                    onClick={handleEnquiry}
+                    className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Enquire Now
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>

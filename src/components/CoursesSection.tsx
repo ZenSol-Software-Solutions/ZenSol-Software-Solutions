@@ -28,6 +28,16 @@ export const CoursesSection = () => {
       tags: ["Node.js", "Express", "APIs", "MongoDB"]
     },
     {
+      title: "React JS",
+      description: "Comprehensive React development from basics to advanced concepts including hooks, context, and state management.",
+      duration: "8 weeks",
+      students: "220+",
+      rating: 4.9,
+      level: "Intermediate",
+      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+      tags: ["React", "JSX", "Hooks", "Redux"]
+    },
+    {
       title: "MERN Stack",
       description: "Complete full-stack development with MongoDB, Express, React, and Node.js.",
       duration: "16 weeks",
@@ -36,6 +46,16 @@ export const CoursesSection = () => {
       level: "Advanced",
       image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
       tags: ["MongoDB", "Express", "React", "Node.js"]
+    },
+    {
+      title: "3D Modeling",
+      description: "Learn 3D modeling, animation, and rendering using industry-standard tools like Blender and Maya.",
+      duration: "14 weeks",
+      students: "85+",
+      rating: 4.7,
+      level: "Beginner to Advanced",
+      image: "https://images.unsplash.com/photo-1618477247222-acbdb0e159b3",
+      tags: ["Blender", "Maya", "3D Animation", "Rendering"]
     },
     {
       title: "UI/UX Design",
@@ -66,8 +86,22 @@ export const CoursesSection = () => {
       level: "Intermediate",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
       tags: ["Power BI", "Data Visualization", "Analytics", "DAX"]
+    },
+    {
+      title: "Adobe Photoshop",
+      description: "Professional photo editing, digital art creation, and graphic design fundamentals.",
+      duration: "6 weeks",
+      students: "110+",
+      rating: 4.5,
+      level: "Beginner to Intermediate",
+      image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab",
+      tags: ["Photoshop", "Photo Editing", "Digital Art", "Graphics"]
     }
   ];
+
+  const handleEnrollment = () => {
+    window.open("https://docs.google.com/forms/d/e/1FAIpQLScKVokkdRX_URPcN5nZogKlFFApbGJ2xOwhDlQtDDxJ9cantA/viewform?usp=header", "_blank");
+  };
 
   return (
     <section id="courses" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
@@ -148,7 +182,7 @@ export const CoursesSection = () => {
                   
                   <Button 
                     className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
-                    onClick={() => console.log(`Enrolling in ${course.title}`)}
+                    onClick={handleEnrollment}
                   >
                     Enroll Now
                     <ArrowRight className="w-4 h-4 ml-2" />
