@@ -3,12 +3,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Zap } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,33 +17,14 @@ export const Navigation = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home", action: () => navigate('/') },
-    { name: "About", href: "#about", action: () => navigate('/') },
-    { name: "Services", href: "#services", action: () => navigate('/') },
-    { name: "Courses", href: "#courses", action: () => navigate('/') },
-    { name: "Team", href: "#team", action: () => navigate('/') },
-    { name: "Graphics Models", href: "/graphics-models", action: () => navigate('/graphics-models') },
-    { name: "Careers", href: "#careers", action: () => navigate('/') },
-    { name: "Contact", href: "#contact", action: () => navigate('/') }
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Courses", href: "#courses" },
+    { name: "Team", href: "#team" },
+    { name: "Careers", href: "#careers" },
+    { name: "Contact", href: "#contact" }
   ];
-
-  const handleNavClick = (item: typeof navItems[0]) => {
-    if (item.href.startsWith('#')) {
-      // For hash links, navigate to home first then scroll
-      if (window.location.pathname !== '/') {
-        navigate('/');
-        setTimeout(() => {
-          document.getElementById(item.href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      } else {
-        document.getElementById(item.href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      // For regular routes
-      item.action();
-    }
-    setIsOpen(false);
-  };
 
   return (
     <motion.nav
@@ -60,9 +39,8 @@ export const Navigation = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <motion.div 
-            className="flex items-center space-x-3 cursor-pointer"
+            className="flex items-center space-x-3"
             whileHover={{ scale: 1.05 }}
-            onClick={() => navigate('/')}
           >
             <div className="relative">
               <motion.div
@@ -82,12 +60,12 @@ export const Navigation = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
-              <motion.button
+              <motion.a
                 key={item.name}
-                onClick={() => handleNavClick(item)}
-                className="text-gray-700 hover:text-blue-600 transition-colors relative group text-sm"
+                href={item.href}
+                className="text-gray-700 hover:text-blue-600 transition-colors relative group"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -97,20 +75,11 @@ export const Navigation = () => {
                 <motion.div
                   className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-blue-500 group-hover:w-full transition-all duration-300"
                 />
-              </motion.button>
+              </motion.a>
             ))}
             <Button 
               className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
-              onClick={() => {
-                if (window.location.pathname !== '/') {
-                  navigate('/');
-                  setTimeout(() => {
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
-                } else {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Get Started
             </Button>
@@ -141,29 +110,23 @@ export const Navigation = () => {
           >
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
-                <motion.button
+                <motion.a
                   key={item.name}
-                  onClick={() => handleNavClick(item)}
-                  className="block w-full text-left text-gray-700 hover:text-blue-600 transition-colors"
+                  href={item.href}
+                  className="block text-gray-700 hover:text-blue-600 transition-colors"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
+                  onClick={() => setIsOpen(false)}
                 >
                   {item.name}
-                </motion.button>
+                </motion.a>
               ))}
               <Button 
                 className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
                 onClick={() => {
                   setIsOpen(false);
-                  if (window.location.pathname !== '/') {
-                    navigate('/');
-                    setTimeout(() => {
-                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                  } else {
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
                 Get Started

@@ -2,13 +2,9 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Linkedin, Github, Mail, ExternalLink } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Linkedin, Twitter, Github, Mail } from "lucide-react";
 
 export const TeamSection = () => {
-  const navigate = useNavigate();
-
   const team = [
     {
       name: "Karthik P",
@@ -18,6 +14,7 @@ export const TeamSection = () => {
       skills: ["Leadership", "Strategy", "Full Stack Development"],
       social: {
         linkedin: "www.linkedin.com/in/karthik2329",
+        instagram: "#",
         email: "karthik@zensol.in"
       }
     },
@@ -33,6 +30,7 @@ export const TeamSection = () => {
         email: "priya@zensol.in"
       }
     },
+    
     {
       name: "Harshini A",
       role: "Chief Executive Officer",
@@ -56,12 +54,45 @@ export const TeamSection = () => {
         linkedin: "#",
         email: "rajesh@zensol.in"
       }
+    },
+    {
+      name: "Kavibarathi S",
+      role: "Developer & Instractor",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
+      skills: ["React", "Database", "Python"],
+      social: {
+        github: "#",
+        linkedin: "#",
+        email: "rajesh@zensol.in"
+      }
+    },
+    
+    {
+      name: "Pranesh",
+      role: "Developer",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      bio: "Full-stack developer specializing in modern web technologies & Cyber Securitys.",
+      skills: ["React.Native", "Database", "Python", "Cyber Security"],
+      social: {
+        github: "#",
+        linkedin: "#",
+        email: "rajesh@zensol.in"
+      }
+    },
+    {
+      name: "Adithyaa G",
+      role: "Graphics Designer",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      bio: "Creative designer focused on user experience and innovative design solutions.",
+      skills: ["UI/UX Design","3D-Modeling", "Figma", "Design Systems"],
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        email: "anita@zensol.in"
+      }
     }
   ];
-
-  const handleViewGraphicsModels = () => {
-    navigate('/graphics-models');
-  };
 
   return (
     <section id="team" className="py-20 bg-gradient-to-br from-slate-50 to-purple-50">
@@ -76,16 +107,9 @@ export const TeamSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Our <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Team</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Meet the passionate professionals who drive innovation and excellence at ZenSol.
           </p>
-          
-          <Button 
-            onClick={handleViewGraphicsModels}
-            className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
-          >
-            View Graphics Models <ExternalLink className="w-4 h-4 ml-2" />
-          </Button>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -111,6 +135,11 @@ export const TeamSection = () => {
                       {member.social.linkedin && (
                         <a href={member.social.linkedin} className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
                           <Linkedin className="w-4 h-4" />
+                        </a>
+                      )}
+                      {member.social.twitter && (
+                        <a href={member.social.twitter} className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+                          <Twitter className="w-4 h-4" />
                         </a>
                       )}
                       {member.social.github && (
