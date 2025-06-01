@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const quickLinks = [
@@ -160,12 +161,12 @@ export const Footer = () => {
             © 2024 ZenSol Software Solutions. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            </Link>
+            <Link to="/terms" className="text-gray-400 hover:text-white transition-colors">
               Terms of Service
-            </a>
+            </Link>
             <a href="#" className="text-gray-400 hover:text-white transition-colors">
               Cookie Policy
             </a>
