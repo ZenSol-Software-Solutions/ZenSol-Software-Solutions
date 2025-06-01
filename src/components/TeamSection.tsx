@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Linkedin, Twitter, Github, Mail, ExternalLink } from "lucide-react";
+import { Linkedin, Github, Mail, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export const TeamSection = () => {
@@ -18,7 +18,6 @@ export const TeamSection = () => {
       skills: ["Leadership", "Strategy", "Full Stack Development"],
       social: {
         linkedin: "www.linkedin.com/in/karthik2329",
-        instagram: "#",
         email: "karthik@zensol.in"
       }
     },
@@ -112,11 +111,6 @@ export const TeamSection = () => {
                       {member.social.linkedin && (
                         <a href={member.social.linkedin} className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
                           <Linkedin className="w-4 h-4" />
-                        </a>
-                      )}
-                      {member.social.twitter && (
-                        <a href={member.social.twitter} className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
-                          <Twitter className="w-4 h-4" />
                         </a>
                       )}
                       {member.social.github && (

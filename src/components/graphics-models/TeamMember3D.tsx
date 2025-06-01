@@ -73,7 +73,6 @@ export const TeamMember3D = ({ memberName, role }: TeamMember3DProps) => {
             color="#ffffff"
             anchorX="center"
             anchorY="middle"
-            font="/fonts/helvetiker_regular.typeface.json"
           >
             {memberName}
           </Text>
@@ -84,7 +83,6 @@ export const TeamMember3D = ({ memberName, role }: TeamMember3DProps) => {
             color="#cccccc"
             anchorX="center"
             anchorY="middle"
-            font="/fonts/helvetiker_regular.typeface.json"
           >
             {role}
           </Text>
