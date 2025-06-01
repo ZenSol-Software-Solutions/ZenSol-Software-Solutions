@@ -6,11 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Linkedin, Twitter, Github, Mail, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-export const TeamSection = () => {
+export const GraphicsModels = () => {
   const navigate = useNavigate();
 
   const team = [
     {
+      id: "karthik",
       name: "Karthik P",
       role: "Founder & CEO",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
@@ -23,6 +24,7 @@ export const TeamSection = () => {
       }
     },
     {
+      id: "arunachalam",
       name: "Arunachalam S",
       role: "Co-Founder",
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b002",
@@ -35,6 +37,7 @@ export const TeamSection = () => {
       }
     },
     {
+      id: "harshini",
       name: "Harshini A",
       role: "Chief Executive Officer",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
@@ -47,6 +50,7 @@ export const TeamSection = () => {
       }
     },
     {
+      id: "anu",
       name: "Anu S",
       role: "Lead Developer",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
@@ -57,45 +61,75 @@ export const TeamSection = () => {
         linkedin: "#",
         email: "rajesh@zensol.in"
       }
+    },
+    {
+      id: "kavibarathi",
+      name: "Kavibarathi S",
+      role: "Developer & Instructor",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
+      skills: ["React", "Database", "Python"],
+      social: {
+        github: "#",
+        linkedin: "#",
+        email: "rajesh@zensol.in"
+      }
+    },
+    {
+      id: "pranesh",
+      name: "Pranesh",
+      role: "Developer",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      bio: "Full-stack developer specializing in modern web technologies & Cyber Security.",
+      skills: ["React.Native", "Database", "Python", "Cyber Security"],
+      social: {
+        github: "#",
+        linkedin: "#",
+        email: "rajesh@zensol.in"
+      }
+    },
+    {
+      id: "adithyaa",
+      name: "Adithyaa G",
+      role: "Graphics Designer",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      bio: "Creative designer focused on user experience and innovative design solutions.",
+      skills: ["UI/UX Design","3D-Modeling", "Figma", "Design Systems"],
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        email: "anita@zensol.in"
+      }
     }
   ];
 
-  const handleViewGraphicsModels = () => {
-    navigate('/graphics-models');
+  const handleViewProfile = (memberId: string) => {
+    navigate(`/team/${memberId}`);
   };
 
   return (
-    <section id="team" className="py-20 bg-gradient-to-br from-slate-50 to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Our <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Team</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Graphics <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Models</span>
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Meet the passionate professionals who drive innovation and excellence at ZenSol.
           </p>
-          
-          <Button 
-            onClick={handleViewGraphicsModels}
-            className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
-          >
-            View Graphics Models <ExternalLink className="w-4 h-4 ml-2" />
-          </Button>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, index) => (
             <motion.div
-              key={index}
+              key={member.id}
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
             >
@@ -136,19 +170,26 @@ export const TeamSection = () => {
                   <p className="text-blue-600 font-medium mb-3">{member.role}</p>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio}</p>
                   
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {member.skills.map((skill, skillIndex) => (
                       <Badge key={skillIndex} variant="secondary" className="text-xs">
                         {skill}
                       </Badge>
                     ))}
                   </div>
+
+                  <Button 
+                    onClick={() => handleViewProfile(member.id)}
+                    className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
+                  >
+                    View 3D Profile <ExternalLink className="w-4 h-4 ml-2" />
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
