@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,7 +8,7 @@ export const TeamSection = () => {
     {
       name: "Karthik P",
       role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+      image: "/images/team/karthik.jpg",
       bio: "Visionary leader with 10+ years in software development and education.",
       skills: ["Leadership", "Strategy", "Full Stack Development"],
       social: {
@@ -21,7 +20,7 @@ export const TeamSection = () => {
     {
       name: "Arunachalam S",
       role: "Co-Founder",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b002",
+      image: "/images/team/arunachalam.jpg",
       bio: "Expert educator with passion for technology training and student success.",
       skills: ["Education", "Curriculum Design", "Marketing"],
       social: {
@@ -30,11 +29,10 @@ export const TeamSection = () => {
         email: "priya@zensol.in"
       }
     },
-    
     {
       name: "Harshini A",
       role: "Chief Executive Officer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      image: "/images/team/harshini.jpg",
       bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
       skills: ["Java", "Database", "Python"],
       social: {
@@ -46,7 +44,7 @@ export const TeamSection = () => {
     {
       name: "Anu S",
       role: "Lead Developer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      image: "/images/team/anu.jpg",
       bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
       skills: ["React", "Node.js", "Cloud Architecture"],
       social: {
@@ -58,7 +56,7 @@ export const TeamSection = () => {
     {
       name: "Kavibarathi S",
       role: "Developer & Instractor",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      image: "/images/team/kavibarathi.jpg",
       bio: "Full-stack developer specializing in modern web technologies and cloud solutions.",
       skills: ["React", "Database", "Python"],
       social: {
@@ -67,11 +65,10 @@ export const TeamSection = () => {
         email: "rajesh@zensol.in"
       }
     },
-    
     {
       name: "Pranesh",
       role: "Developer",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      image: "/images/team/pranesh.jpg",
       bio: "Full-stack developer specializing in modern web technologies & Cyber Securitys.",
       skills: ["React.Native", "Database", "Python", "Cyber Security"],
       social: {
@@ -83,7 +80,7 @@ export const TeamSection = () => {
     {
       name: "Adithyaa G",
       role: "Graphics Designer",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      image: "/images/team/adithyaa.jpg",
       bio: "Creative designer focused on user experience and innovative design solutions.",
       skills: ["UI/UX Design","3D-Modeling", "Figma", "Design Systems"],
       social: {
