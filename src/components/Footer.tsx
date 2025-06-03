@@ -2,8 +2,15 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 export const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const { toast } = useToast();
+
   const quickLinks = [
     { name: "About Us", href: "#about" },
     { name: "Courses", href: "#courses" },
@@ -27,6 +34,52 @@ export const Footer = () => {
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Youtube, href: "#", label: "YouTube" }
   ];
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast({
+        title: "Email Required",
+        description: "Please enter your email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubscribing(true);
+    try {
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert({ email });
+
+      if (error) {
+        if (error.code === '23505') { // Unique constraint violation
+          toast({
+            title: "Already Subscribed",
+            description: "You're already subscribed to our newsletter!",
+          });
+        } else {
+          throw error;
+        }
+      } else {
+        toast({
+          title: "Successfully Subscribed!",
+          description: "Thank you for subscribing to our newsletter.",
+        });
+        setEmail("");
+      }
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error);
+      toast({
+        title: "Subscription Failed",
+        description: "There was an error subscribing to the newsletter. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   return (
     <footer id="contact" className="bg-gray-900 text-white py-16">
@@ -135,16 +188,22 @@ export const Footer = () => {
               <p className="text-gray-400 text-xs mb-3">
                 Subscribe to get updates on new courses and opportunities
               </p>
-              <div className="flex">
+              <form onSubmit={handleNewsletterSubmit} className="flex">
                 <input
                   type="email"
                   placeholder="Your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-l-md text-sm focus:outline-none focus:border-blue-500"
                 />
-                <button className="px-4 py-2 bg-gradient-to-r from-green-500 to-blue-500 rounded-r-md hover:from-green-600 hover:to-blue-600 transition-colors">
+                <button 
+                  type="submit"
+                  disabled={isSubscribing}
+                  className="px-4 py-2 bg-gradient-to-r from-green-500 to-blue-500 rounded-r-md hover:from-green-600 hover:to-blue-600 transition-colors disabled:opacity-50"
+                >
                   <Mail className="w-4 h-4" />
                 </button>
-              </div>
+              </form>
             </div>
           </motion.div>
         </div>

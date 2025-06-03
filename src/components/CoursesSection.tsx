@@ -4,8 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Users, Star, ArrowRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 export const CoursesSection = () => {
+  const { toast } = useToast();
+
   const courses = [
     {
       title: "Front-end Development",
@@ -99,8 +103,37 @@ export const CoursesSection = () => {
     }
   ];
 
-  const handleEnrollment = () => {
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLScKVokkdRX_URPcN5nZogKlFFApbGJ2xOwhDlQtDDxJ9cantA/viewform?usp=header", "_blank");
+  const handleEnrollment = async (courseName: string) => {
+    try {
+      // First, try the Google Form approach
+      window.open("https://docs.google.com/forms/d/e/1FAIpQLScKVokkdRX_URPcN5nZogKlFFApbGJ2xOwhDlQtDDxJ9cantA/viewform?usp=header", "_blank");
+      
+      // Also store the enrollment intent in our database for tracking
+      const { error } = await supabase
+        .from('course_enrollments')
+        .insert({
+          course_name: courseName,
+          student_name: 'Form Submission',
+          student_email: 'via_google_form@temp.com', // Temporary placeholder
+          status: 'form_redirected'
+        });
+
+      if (error) {
+        console.error('Error logging enrollment intent:', error);
+      }
+
+      toast({
+        title: "Redirected to Enrollment Form",
+        description: `You're being redirected to enroll in ${courseName}. Please fill out the form to complete your enrollment.`,
+      });
+    } catch (error) {
+      console.error('Error handling enrollment:', error);
+      toast({
+        title: "Enrollment Error",
+        description: "There was an issue processing your enrollment. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -182,7 +215,7 @@ export const CoursesSection = () => {
                   
                   <Button 
                     className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
-                    onClick={handleEnrollment}
+                    onClick={() => handleEnrollment(course.title)}
                   >
                     Enroll Now
                     <ArrowRight className="w-4 h-4 ml-2" />

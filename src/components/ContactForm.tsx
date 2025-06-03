@@ -9,6 +9,8 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useForm } from "react-hook-form";
 import { Upload, Send, User, Mail, Phone, FileText } from "lucide-react";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 type FormData = {
   fullName: string;
@@ -22,13 +24,57 @@ type FormData = {
 
 export const ContactForm = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   
   const form = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form submitted:", data);
-    // Here you would typically send the data to your backend
-    alert("Application submitted successfully! We'll get back to you soon.");
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    try {
+      // Insert contact submission
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert({
+          name: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          message: `Position: ${data.position}\nExperience: ${data.experience}\n\nMessage: ${data.message}`
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      // Also insert course enrollment if it's a course-related application
+      if (data.position.toLowerCase().includes('course') || data.position.toLowerCase().includes('training')) {
+        await supabase
+          .from('course_enrollments')
+          .insert({
+            course_name: data.position,
+            student_name: data.fullName,
+            student_email: data.email,
+            student_phone: data.phone
+          });
+      }
+
+      toast({
+        title: "Application Submitted!",
+        description: "We've received your application and will get back to you soon.",
+      });
+
+      form.reset();
+      setSelectedFile(null);
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      toast({
+        title: "Submission Failed",
+        description: "There was an error submitting your application. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +82,11 @@ export const ContactForm = () => {
     if (file && file.type === "application/pdf") {
       setSelectedFile(file);
     } else {
-      alert("Please select a valid PDF file.");
+      toast({
+        title: "Invalid File",
+        description: "Please select a valid PDF file.",
+        variant: "destructive",
+      });
       event.target.value = "";
     }
   };
@@ -223,10 +273,11 @@ export const ContactForm = () => {
                   <Button
                     type="submit"
                     size="lg"
+                    disabled={isSubmitting}
                     className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
                   >
                     <Send className="w-5 h-5 mr-2" />
-                    Submit Application
+                    {isSubmitting ? "Submitting..." : "Submit Application"}
                   </Button>
                 </form>
               </Form>
